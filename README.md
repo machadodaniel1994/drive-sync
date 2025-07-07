@@ -1,6 +1,6 @@
 # DriveSync - Sistema SaaS de Gestão de Frotas
 
-![DriveSync Logo](https://images.pexels.com/photos/8828786/pexels-photo-8828786.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&dpr=2)
+![DriveSync Logo]
 
 DriveSync é um sistema SaaS (Software as a Service) completo para gestão de frotas internas, desenvolvido especialmente para prefeituras, órgãos públicos e empresas privadas. O sistema é **multi-tenant (white label)** e permite isolamento total dos dados de cada cliente.
 
