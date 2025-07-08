@@ -141,16 +141,16 @@ Após executar a migração, você pode usar estas credenciais para testar o sis
 | Tipo | Email | Senha | Descrição |
 |------|-------|-------|-----------|
 | **Super Admin** | admin@admin.com | admin123 | Controle total do sistema |
-| **Administrador** | admin@sp.gov.br | demo123 | Acesso completo ao sistema |
-| **Operador** | operador@sp.gov.br | demo123 | Gestão operacional |
-| **Motorista** | motorista@sp.gov.br | demo123 | Acesso limitado |
+| **Administrador** | admin@manoelviana.rs.gov.br | demo123 | Acesso completo ao sistema |
+| **Operador** | operador@manoelviana.rs.gov.br | demo123 | Gestão operacional |
+| **Motorista** | motorista@manoelviana.rs.gov.br | demo123 | Acesso limitado |
 
 > **Nota**: O super admin (admin@admin.com) deve ser criado manualmente no Supabase Auth Dashboard.
 
 ## 📊 Dados de Demonstração
 
-O sistema vem com dados pré-carregados para demonstração:
-- **1 Tenant**: Prefeitura Municipal de São Paulo
+O sistema vem com dados pré-carregados da **Prefeitura Municipal de Manoel Viana - RS**:
+- **1 Tenant**: Prefeitura Municipal de Manoel Viana
 - **5 Motoristas** com diferentes status e CNHs
 - **5 Veículos** (vans, ambulância, caminhonete)
 - **3 Viagens** em diferentes estágios
@@ -160,6 +160,10 @@ O sistema vem com dados pré-carregados para demonstração:
 - **2 Planos de viagem** (aprovado e pendente)
 
 ## 📸 Screenshots do Sistema
+
+### Landing Page
+![Landing Page](screenshots/landing.png)
+*Página inicial moderna apresentando o sistema com call-to-actions e informações de contato*
 
 ### Tela de Login
 ![Tela de Login](screenshots/login.png)

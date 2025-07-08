@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from './hooks/useAuth'
 import { supabase } from './lib/supabase'
 import type { Tenant } from './lib/supabase'
+import { LandingPage } from './components/LandingPage'
 import { LoginForm } from './components/LoginForm'
 import { Layout } from './components/Layout'
 import { Dashboard } from './components/Dashboard'
@@ -11,6 +12,7 @@ function App() {
   const { user, loading } = useAuth()
   const [tenant, setTenant] = useState<Tenant | null>(null)
   const [currentView, setCurrentView] = useState('dashboard')
+  const [showLogin, setShowLogin] = useState(false)
 
   useEffect(() => {
     if (user) {
@@ -58,7 +60,10 @@ function App() {
   }
 
   if (!user) {
-    return <LoginForm />
+    if (showLogin) {
+      return <LoginForm />
+    }
+    return <LandingPage onLoginClick={() => setShowLogin(true)} />
   }
 
   const renderContent = () => {
