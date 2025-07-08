@@ -1,48 +1,14 @@
 import React, { useState } from 'react'
 import { Plus, Search, Edit, Trash2, User, Phone, Calendar, CheckCircle, XCircle } from 'lucide-react'
-
-interface Motorista {
-  id: string
-  nome: string
-  telefone?: string
-  cnh?: string
-  validade_cnh?: string
-  status: 'disponivel' | 'indisponivel'
-}
+import { useData } from '../hooks/useData'
+import type { Motorista } from '../lib/supabase'
 
 export function MotoristasList() {
   const [searchTerm, setSearchTerm] = useState('')
   const [showModal, setShowModal] = useState(false)
+  const { data: motoristas, loading, error } = useData<Motorista>('motoristas')
   
-  // Dados de exemplo
-  const motoristas: Motorista[] = [
-    {
-      id: '1',
-      nome: 'Carlos Oliveira',
-      telefone: '(11) 99999-1234',
-      cnh: '12345678901',
-      validade_cnh: '2025-12-31',
-      status: 'disponivel'
-    },
-    {
-      id: '2',
-      nome: 'Ana Pereira',
-      telefone: '(11) 99999-5678',
-      cnh: '98765432109',
-      validade_cnh: '2025-08-15',
-      status: 'disponivel'
-    },
-    {
-      id: '3',
-      nome: 'Ricardo Alves',
-      telefone: '(11) 99999-9999',
-      cnh: '55555555555',
-      validade_cnh: '2025-06-30',
-      status: 'indisponivel'
-    }
-  ]
-
-  const filteredMotoristas = motoristas.filter(motorista =>
+  const filteredMotoristas = (motoristas || []).filter(motorista =>
     motorista.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
     motorista.telefone?.includes(searchTerm)
   )
@@ -60,6 +26,12 @@ export function MotoristasList() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+          <p className="text-red-700">Erro ao carregar motoristas: {error}</p>
+        </div>
+      )}
+
       {loading && (
         <div className="flex items-center justify-center py-12">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
@@ -73,7 +45,7 @@ export function MotoristasList() {
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Motoristas</h1>
               <p className="text-gray-600 mt-1">
-                Gerencie os motoristas da sua frota ({motoristas.length} {motoristas.length === 1 ? 'motorista' : 'motoristas'})
+                Gerencie os motoristas da sua frota ({(motoristas || []).length} {(motoristas || []).length === 1 ? 'motorista' : 'motoristas'})
               </p>
             </div>
             <button

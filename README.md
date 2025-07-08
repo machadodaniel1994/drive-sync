@@ -136,13 +136,16 @@ O sistema estará disponível em `http://localhost:5173`
 
 ## 🔑 Credenciais de Teste
 
-Após executar a migração, você pode usar estas credenciais para testar:
+Após executar a migração, você pode usar estas credenciais para testar o sistema:
 
 | Tipo | Email | Senha | Descrição |
 |------|-------|-------|-----------|
+| **Super Admin** | admin@admin.com | admin123 | Controle total do sistema |
 | **Administrador** | admin@sp.gov.br | demo123 | Acesso completo ao sistema |
 | **Operador** | operador@sp.gov.br | demo123 | Gestão operacional |
 | **Motorista** | motorista@sp.gov.br | demo123 | Acesso limitado |
+
+> **Nota**: O super admin (admin@admin.com) deve ser criado manualmente no Supabase Auth Dashboard.
 
 ## 📊 Dados de Demonstração
 
@@ -155,6 +158,48 @@ O sistema vem com dados pré-carregados para demonstração:
 - **2 Abastecimentos** com dados realistas
 - **3 Lembretes de manutenção** pendentes
 - **2 Planos de viagem** (aprovado e pendente)
+
+## 📸 Screenshots do Sistema
+
+### Tela de Login
+![Tela de Login](screenshots/login.png)
+*Interface moderna de autenticação com credenciais de demonstração visíveis*
+
+### Dashboard Principal
+![Dashboard](screenshots/dashboard.png)
+*Painel principal com métricas em tempo real, atividades recentes e alertas importantes*
+
+### Lista de Motoristas
+![Lista de Motoristas](screenshots/motoristas.png)
+*Gestão completa de motoristas com status, CNH e informações de contato*
+
+### Cadastro de Motorista
+![Cadastro de Motorista](screenshots/motorista-form.png)
+*Formulário intuitivo para cadastro de novos motoristas*
+
+### Lista de Veículos
+![Lista de Veículos](screenshots/veiculos.png)
+*Controle da frota com informações detalhadas de cada veículo*
+
+### Agendamento de Viagens
+![Agendamento de Viagens](screenshots/viagens.png)
+*Sistema completo de agendamento com passageiros e status em tempo real*
+
+### Planos de Viagem
+![Planos de Viagem](screenshots/planos.png)
+*Criação e gestão de planos de viagem com sistema de aprovação*
+
+### Controle de Abastecimentos
+![Abastecimentos](screenshots/abastecimentos.png)
+*Registro detalhado de abastecimentos com controle de custos*
+
+### Manutenção Preventiva
+![Manutenção](screenshots/manutencao.png)
+*Lembretes automáticos e controle de manutenções por veículo*
+
+### Configurações do Sistema
+![Configurações](screenshots/configuracoes.png)
+*Painel administrativo com personalização de identidade visual*
 
 ## 🗄️ Estrutura do Banco de Dados
 
