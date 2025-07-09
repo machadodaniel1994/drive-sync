@@ -1,15 +1,8 @@
-import React from 'react'
+'use client'
+
 import { Car, Users, Calendar, TrendingUp, AlertTriangle, CheckCircle } from 'lucide-react'
 
-interface DashboardProps {
-  systemConfig: {
-    nome: string
-    cor_primaria: string
-    cor_secundaria: string
-  }
-}
-
-export function Dashboard({ systemConfig }: DashboardProps) {
+export function Dashboard() {
   const stats = [
     {
       name: 'Motoristas Ativos',
@@ -49,8 +42,8 @@ export function Dashboard({ systemConfig }: DashboardProps) {
     {
       id: 1,
       type: 'viagem',
-      message: 'Viagem para Hospital Central iniciada',
-      motorista: 'Carlos Oliveira',
+      message: 'Viagem para Hospital Regional iniciada',
+      driver: 'Carlos Oliveira',
       time: '2 min atrás',
       status: 'success',
     },
@@ -58,7 +51,7 @@ export function Dashboard({ systemConfig }: DashboardProps) {
       id: 2,
       type: 'manutencao',
       message: 'Manutenção preventiva VAN-001 agendada',
-      motorista: 'Sistema',
+      driver: 'Sistema',
       time: '15 min atrás',
       status: 'warning',
     },
@@ -66,7 +59,7 @@ export function Dashboard({ systemConfig }: DashboardProps) {
       id: 3,
       type: 'abastecimento',
       message: 'Abastecimento registrado - R$ 120,00',
-      motorista: 'Ana Pereira',
+      driver: 'Ana Pereira',
       time: '1 hora atrás',
       status: 'info',
     },
@@ -95,14 +88,14 @@ export function Dashboard({ systemConfig }: DashboardProps) {
           Bem-vindo ao DriveSync
         </h1>
         <p className="text-gray-600">
-          Painel de controle - {systemConfig.nome}
+          Painel de controle - Prefeitura Municipal de Manoel Viana
         </p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((stat) => (
-          <div key={stat.name} className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+          <div key={stat.name} className="card">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">{stat.name}</p>
@@ -126,62 +119,58 @@ export function Dashboard({ systemConfig }: DashboardProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Recent Activities */}
-        <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100">
-          <div className="p-6 border-b border-gray-100">
+        <div className="lg:col-span-2 card">
+          <div className="border-b border-gray-100 pb-4 mb-6">
             <h3 className="text-lg font-semibold text-gray-900">Atividades Recentes</h3>
           </div>
-          <div className="p-6">
-            <div className="space-y-4">
-              {recentActivities.map((activity) => (
-                <div key={activity.id} className="flex items-start space-x-3">
-                  <div className={`p-2 rounded-full ${
-                    activity.status === 'success' ? 'bg-green-100' :
-                    activity.status === 'warning' ? 'bg-yellow-100' :
-                    'bg-blue-100'
-                  }`}>
-                    <CheckCircle className={`w-4 h-4 ${
-                      activity.status === 'success' ? 'text-green-600' :
-                      activity.status === 'warning' ? 'text-yellow-600' :
-                      'text-blue-600'
-                    }`} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900">
-                      {activity.message}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      {activity.motorista} • {activity.time}
-                    </p>
-                  </div>
+          <div className="space-y-4">
+            {recentActivities.map((activity) => (
+              <div key={activity.id} className="flex items-start space-x-3">
+                <div className={`p-2 rounded-full ${
+                  activity.status === 'success' ? 'bg-green-100' :
+                  activity.status === 'warning' ? 'bg-yellow-100' :
+                  'bg-blue-100'
+                }`}>
+                  <CheckCircle className={`w-4 h-4 ${
+                    activity.status === 'success' ? 'text-green-600' :
+                    activity.status === 'warning' ? 'text-yellow-600' :
+                    'text-blue-600'
+                  }`} />
                 </div>
-              ))}
-            </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900">
+                    {activity.message}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {activity.driver} • {activity.time}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Alerts */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100">
-          <div className="p-6 border-b border-gray-100">
+        <div className="card">
+          <div className="border-b border-gray-100 pb-4 mb-6">
             <h3 className="text-lg font-semibold text-gray-900">Alertas</h3>
           </div>
-          <div className="p-6">
-            <div className="space-y-4">
-              {alerts.map((alert) => (
-                <div key={alert.id} className="flex items-start space-x-3">
-                  <AlertTriangle className={`w-5 h-5 mt-0.5 ${
-                    alert.type === 'error' ? 'text-red-500' : 'text-yellow-500'
-                  }`} />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900">
-                      {alert.message}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      {alert.time}
-                    </p>
-                  </div>
+          <div className="space-y-4">
+            {alerts.map((alert) => (
+              <div key={alert.id} className="flex items-start space-x-3">
+                <AlertTriangle className={`w-5 h-5 mt-0.5 ${
+                  alert.type === 'error' ? 'text-red-500' : 'text-yellow-500'
+                }`} />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900">
+                    {alert.message}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {alert.time}
+                  </p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

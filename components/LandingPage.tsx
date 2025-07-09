@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+
 import { 
   Car, 
   Users, 
@@ -16,6 +17,7 @@ import {
   Globe,
   Clock
 } from 'lucide-react'
+import { Button } from './ui/Button'
 
 interface LandingPageProps {
   onLoginClick: () => void
@@ -46,7 +48,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
     {
       icon: Shield,
       title: 'Segurança Total',
-      description: 'Dados isolados por cliente com Row Level Security e criptografia avançada.'
+      description: 'Dados protegidos com criptografia avançada e controle de acesso.'
     },
     {
       icon: Smartphone,
@@ -61,7 +63,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
     'Controle total em tempo real',
     'Relatórios automáticos e precisos',
     'Manutenção preventiva inteligente',
-    'Integração WhatsApp nativa'
+    'Interface moderna e intuitiva'
   ]
 
   const testimonials = [
@@ -95,7 +97,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
                 <Car className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -104,15 +106,12 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <a href="#contato" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <a href="#contato" className="text-gray-600 hover:text-primary-600 transition-colors">
                 Contato
               </a>
-              <button
-                onClick={onLoginClick}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-              >
+              <Button onClick={onLoginClick}>
                 Acessar Sistema
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -125,11 +124,11 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
             <div>
               <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
                 <Zap className="w-4 h-4 mr-2" />
-                Sistema SaaS Multi-Tenant
+                Sistema Moderno de Gestão
               </div>
               <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Gestão de Frotas
-                <span className="text-blue-600 block">Inteligente e Moderna</span>
+                <span className="text-primary-600 block">Inteligente e Moderna</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Sistema completo para prefeituras e empresas gerenciarem suas frotas com 
@@ -137,24 +136,18 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 o setor público brasileiro.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={onLoginClick}
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center font-semibold"
-                >
+                <Button size="lg" onClick={onLoginClick}>
                   Testar Gratuitamente
                   <ArrowRight className="w-5 h-5 ml-2" />
-                </button>
-                <a
-                  href="#contato"
-                  className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg hover:bg-blue-50 transition-colors flex items-center justify-center font-semibold"
-                >
-                  Falar com Especialista
-                </a>
+                </Button>
+                <Button variant="outline" size="lg">
+                  <a href="#contato">Falar com Especialista</a>
+                </Button>
               </div>
             </div>
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                <div className="bg-blue-600 rounded-lg p-4 mb-6">
+                <div className="bg-primary-600 rounded-lg p-4 mb-6">
                   <div className="flex items-center justify-between text-white">
                     <span className="font-semibold">Dashboard DriveSync</span>
                     <div className="flex space-x-1">
@@ -167,24 +160,24 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center space-x-3">
-                      <Users className="w-5 h-5 text-blue-600" />
+                      <Users className="w-5 h-5 text-primary-600" />
                       <span className="font-medium">Motoristas Ativos</span>
                     </div>
                     <span className="text-2xl font-bold text-green-600">12</span>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center space-x-3">
-                      <Car className="w-5 h-5 text-blue-600" />
+                      <Car className="w-5 h-5 text-primary-600" />
                       <span className="font-medium">Veículos Disponíveis</span>
                     </div>
                     <span className="text-2xl font-bold text-green-600">8</span>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center space-x-3">
-                      <Calendar className="w-5 h-5 text-blue-600" />
+                      <Calendar className="w-5 h-5 text-primary-600" />
                       <span className="font-medium">Viagens Hoje</span>
                     </div>
-                    <span className="text-2xl font-bold text-blue-600">15</span>
+                    <span className="text-2xl font-bold text-primary-600">15</span>
                   </div>
                 </div>
               </div>
@@ -207,9 +200,9 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+              <div key={index} className="card hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                  <feature.icon className="w-6 h-6 text-blue-600" />
+                  <feature.icon className="w-6 h-6 text-primary-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
                   {feature.title}
@@ -244,7 +237,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="card">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BarChart3 className="w-8 h-8 text-green-600" />
@@ -256,7 +249,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">40%</div>
+                  <div className="text-3xl font-bold text-primary-600 mb-2">40%</div>
                   <div className="text-sm text-gray-600">Redução de Custos</div>
                 </div>
                 <div className="text-center">
@@ -290,7 +283,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+              <div key={index} className="card">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
@@ -302,7 +295,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 <div>
                   <div className="font-semibold text-gray-900">{testimonial.name}</div>
                   <div className="text-sm text-gray-600">{testimonial.role}</div>
-                  <div className="text-sm text-blue-600">{testimonial.city}</div>
+                  <div className="text-sm text-primary-600">{testimonial.city}</div>
                 </div>
               </div>
             ))}
@@ -311,7 +304,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-primary-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Pronto para modernizar sua gestão de frotas?
@@ -321,20 +314,22 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
             com o DriveSync. Teste gratuitamente por 30 dias.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
+            <Button 
+              size="lg" 
+              variant="secondary"
               onClick={onLoginClick}
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-50 transition-colors font-semibold flex items-center justify-center"
             >
               <Clock className="w-5 h-5 mr-2" />
               Teste Grátis por 30 Dias
-            </button>
-            <a
-              href="#contato"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-blue-600 transition-colors font-semibold flex items-center justify-center"
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-primary-600"
             >
               <Phone className="w-5 h-5 mr-2" />
-              Agendar Demonstração
-            </a>
+              <a href="#contato">Agendar Demonstração</a>
+            </Button>
           </div>
         </div>
       </section>
@@ -354,7 +349,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-blue-600" />
+                    <Phone className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Telefone</div>
@@ -363,7 +358,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-blue-600" />
+                    <Mail className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Email</div>
@@ -372,7 +367,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-blue-600" />
+                    <MapPin className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Endereço</div>
@@ -381,7 +376,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Globe className="w-6 h-6 text-blue-600" />
+                    <Globe className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Website</div>
@@ -390,7 +385,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="card">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Solicite uma Demonstração
               </h3>
@@ -401,7 +396,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="input"
                     placeholder="Seu nome completo"
                   />
                 </div>
@@ -411,7 +406,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                   </label>
                   <input
                     type="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="input"
                     placeholder="seu@prefeitura.gov.br"
                   />
                 </div>
@@ -421,7 +416,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="input"
                     placeholder="Nome da prefeitura"
                   />
                 </div>
@@ -431,7 +426,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                   </label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="input"
                     placeholder="(55) 99999-9999"
                   />
                 </div>
@@ -441,16 +436,13 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                   </label>
                   <textarea
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="input"
                     placeholder="Conte-nos sobre suas necessidades..."
                   ></textarea>
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
-                >
+                <Button type="submit" className="w-full">
                   Enviar Solicitação
-                </button>
+                </Button>
               </form>
             </div>
           </div>
@@ -463,7 +455,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
                   <Car className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-xl font-bold">DriveSync</span>

@@ -1,5 +1,7 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase } from '@/lib/supabase'
 
 export function useData<T>(
   table: string,
@@ -26,8 +28,8 @@ export function useData<T>(
 
         setData(result || [])
       } catch (err) {
-        console.error(`Erro ao buscar dados de ${table}:`, err)
-        setError(err instanceof Error ? err.message : 'Erro desconhecido')
+        console.error(`Error fetching data from ${table}:`, err)
+        setError(err instanceof Error ? err.message : 'Unknown error')
       } finally {
         setLoading(false)
       }
@@ -36,8 +38,8 @@ export function useData<T>(
     fetchData()
   }, [table, select, ...dependencies])
 
-  const refetch = () => {
-    fetchData()
+  const refetch = async () => {
+    await fetchData()
   }
 
   return { data, loading, error, refetch }

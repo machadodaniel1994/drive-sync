@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+'use client'
+
+import { useState, ReactNode } from 'react'
 import { 
   Car, 
   Users, 
@@ -13,31 +15,25 @@ import {
   BarChart3,
   Wrench
 } from 'lucide-react'
-import { useAuth } from '../hooks/useAuth'
+import { useAuth } from '@/lib/hooks/useAuth'
+import { Button } from '@/components/ui/Button'
 
-interface LayoutProps {
-  children: React.ReactNode
-  systemConfig?: {
-    nome: string
-    logo_url?: string
-    cor_primaria: string
-    cor_secundaria: string
-  }
+interface DashboardLayoutProps {
+  children: ReactNode
 }
 
-export function Layout({ children, systemConfig }: LayoutProps) {
+export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { signOut } = useAuth()
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
-    { name: 'Motoristas', href: '/motoristas', icon: Users },
-    { name: 'Veículos', href: '/veiculos', icon: Car },
-    { name: 'Viagens', href: '/viagens', icon: Calendar },
-    { name: 'Planos de Viagem', href: '/planos', icon: MapPin },
-    { name: 'Abastecimentos', href: '/abastecimentos', icon: Fuel },
-    { name: 'Manutenção', href: '/manutencao', icon: Wrench },
-    { name: 'Configurações', href: '/configuracoes', icon: Settings },
+    { name: 'Dashboard', href: '/', icon: BarChart3, current: true },
+    { name: 'Motoristas', href: '/drivers', icon: Users, current: false },
+    { name: 'Veículos', href: '/vehicles', icon: Car, current: false },
+    { name: 'Viagens', href: '/trips', icon: Calendar, current: false },
+    { name: 'Abastecimentos', href: '/fuel', icon: Fuel, current: false },
+    { name: 'Manutenção', href: '/maintenance', icon: Wrench, current: false },
+    { name: 'Configurações', href: '/settings', icon: Settings, current: false },
   ]
 
   const handleSignOut = async () => {
@@ -56,18 +52,12 @@ export function Layout({ children, systemConfig }: LayoutProps) {
           <div className="flex flex-col w-64 bg-white shadow-lg">
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <div className="flex items-center space-x-3">
-                {systemConfig?.logo_url && (
-                  <img 
-                    src={systemConfig.logo_url} 
-                    alt={systemConfig.nome} 
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
-                )}
+                <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                  <Car className="w-5 h-5 text-white" />
+                </div>
                 <div>
                   <h1 className="text-lg font-bold text-gray-900">DriveSync</h1>
-                  {systemConfig && (
-                    <p className="text-xs text-gray-500 truncate w-40">{systemConfig.nome}</p>
-                  )}
+                  <p className="text-xs text-gray-500">Prefeitura de Manoel Viana</p>
                 </div>
               </div>
               <button
@@ -83,7 +73,11 @@ export function Layout({ children, systemConfig }: LayoutProps) {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                  className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    item.current
+                      ? 'bg-primary-100 text-primary-700'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
                 >
                   <item.icon className="w-5 h-5 mr-3" />
                   {item.name}
@@ -92,13 +86,14 @@ export function Layout({ children, systemConfig }: LayoutProps) {
             </nav>
 
             <div className="border-t border-gray-200 p-4">
-              <button
+              <Button
+                variant="ghost"
                 onClick={handleSignOut}
-                className="flex items-center w-full px-3 py-2 text-sm font-medium text-red-600 rounded-lg hover:bg-red-50 transition-colors"
+                className="w-full justify-start text-red-600 hover:bg-red-50"
               >
                 <LogOut className="w-5 h-5 mr-3" />
                 Sair
-              </button>
+              </Button>
             </div>
           </div>
           
