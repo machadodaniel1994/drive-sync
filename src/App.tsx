@@ -22,10 +22,9 @@ function App() {
           .from('tenants')
           .select('*')
           .limit(1)
-          .single()
 
-        if (data && !error) {
-          setTenant(data)
+        if (!error && data && data.length > 0) {
+          setTenant(data[0])
         }
       }
 
