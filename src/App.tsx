@@ -16,19 +16,30 @@ function App() {
 
   useEffect(() => {
     if (user) {
-      // Buscar dados do tenant - na implementação real, isso seria baseado no usuário
-      const fetchTenant = async () => {
+      // Buscar configurações do sistema (single-tenant)
+      const fetchSystemConfig = async () => {
         const { data, error } = await supabase
-          .from('tenants')
+          .from('configuracoes_sistema')
           .select('*')
-          .limit(1)
+          .single()
 
-        if (!error && data && data.length > 0) {
-          setTenant(data[0])
+        if (data && !error) {
+          // Mapear para o formato esperado pelo componente
+          setTenant({
+            id: data.id,
+            nome: data.nome_organizacao,
+            cidade: data.cidade,
+            uf: data.uf,
+            logo_url: data.logo_url,
+            cor_primaria: data.cor_primaria,
+            cor_secundaria: data.cor_secundaria,
+            created_at: data.created_at,
+            updated_at: data.updated_at
+          })
         }
       }
 
-      fetchTenant()
+      fetchSystemConfig()
     }
   }, [user])
 

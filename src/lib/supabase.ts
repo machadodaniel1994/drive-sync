@@ -6,6 +6,19 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // Tipos para as tabelas
+export interface SystemConfig {
+  id: string
+  nome_organizacao: string
+  cidade?: string
+  uf?: string
+  logo_url?: string
+  cor_primaria: string
+  cor_secundaria: string
+  created_at: string
+  updated_at: string
+}
+
+// Interface compatível para o componente (mapeamento)
 export interface Tenant {
   id: string
   nome: string
@@ -20,7 +33,6 @@ export interface Tenant {
 
 export interface Usuario {
   id: string
-  tenant_id: string
   email: string
   nome: string
   role: 'admin' | 'operador' | 'motorista'
@@ -32,7 +44,6 @@ export interface Usuario {
 
 export interface Motorista {
   id: string
-  tenant_id: string
   nome: string
   telefone?: string
   cnh?: string
@@ -44,7 +55,6 @@ export interface Motorista {
 
 export interface Veiculo {
   id: string
-  tenant_id: string
   placa: string
   modelo: string
   tipo: string
@@ -57,7 +67,6 @@ export interface Veiculo {
 
 export interface Viagem {
   id: string
-  tenant_id: string
   motorista_id?: string
   veiculo_id?: string
   agendador_id?: string
@@ -74,7 +83,6 @@ export interface Viagem {
 
 export interface Abastecimento {
   id: string
-  tenant_id: string
   viagem_id?: string
   motorista_id?: string
   veiculo_id?: string
@@ -91,7 +99,6 @@ export interface Abastecimento {
 export interface PlanoViagem {
   id: string
   motorista_id?: string
-  tenant_id: string
   titulo: string
   descricao?: string
   data_criacao: string
@@ -105,7 +112,6 @@ export interface PlanoViagem {
 export interface LembreteManutencao {
   id: string
   veiculo_id: string
-  tenant_id: string
   tipo: string
   data_prevista?: string
   km_previsto?: number

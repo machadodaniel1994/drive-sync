@@ -2,14 +2,14 @@ import React from 'react'
 import { Car, Users, Calendar, TrendingUp, AlertTriangle, CheckCircle } from 'lucide-react'
 
 interface DashboardProps {
-  tenant: {
+  systemConfig: {
     nome: string
     cor_primaria: string
     cor_secundaria: string
   }
 }
 
-export function Dashboard({ tenant }: DashboardProps) {
+export function Dashboard({ systemConfig }: DashboardProps) {
   const stats = [
     {
       name: 'Motoristas Ativos',
@@ -95,7 +95,7 @@ export function Dashboard({ tenant }: DashboardProps) {
           Bem-vindo ao DriveSync
         </h1>
         <p className="text-gray-600">
-          Painel de controle - {tenant.nome}
+          Painel de controle - {systemConfig.nome}
         </p>
       </div>
 

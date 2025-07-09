@@ -17,7 +17,7 @@ import { useAuth } from '../hooks/useAuth'
 
 interface LayoutProps {
   children: React.ReactNode
-  tenant?: {
+  systemConfig?: {
     nome: string
     logo_url?: string
     cor_primaria: string
@@ -25,7 +25,7 @@ interface LayoutProps {
   }
 }
 
-export function Layout({ children, tenant }: LayoutProps) {
+export function Layout({ children, systemConfig }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { signOut } = useAuth()
 
@@ -56,17 +56,17 @@ export function Layout({ children, tenant }: LayoutProps) {
           <div className="flex flex-col w-64 bg-white shadow-lg">
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <div className="flex items-center space-x-3">
-                {tenant?.logo_url && (
+                {systemConfig?.logo_url && (
                   <img 
-                    src={tenant.logo_url} 
-                    alt={tenant.nome} 
+                    src={systemConfig.logo_url} 
+                    alt={systemConfig.nome} 
                     className="w-8 h-8 rounded-full object-cover"
                   />
                 )}
                 <div>
                   <h1 className="text-lg font-bold text-gray-900">DriveSync</h1>
-                  {tenant && (
-                    <p className="text-xs text-gray-500 truncate w-40">{tenant.nome}</p>
+                  {systemConfig && (
+                    <p className="text-xs text-gray-500 truncate w-40">{systemConfig.nome}</p>
                   )}
                 </div>
               </div>
