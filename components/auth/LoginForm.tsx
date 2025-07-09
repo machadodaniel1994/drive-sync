@@ -25,10 +25,15 @@ export function LoginForm({ onBack }: LoginFormProps) {
     try {
       await signIn(email, password)
     } catch (err) {
-      setError('Credenciais inválidas. Verifique seu email e senha.')
+      setError('Erro ao fazer login. Verifique se o Supabase está configurado corretamente.')
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleDemoLogin = (demoEmail: string) => {
+    setEmail(demoEmail)
+    setPassword('demo123')
   }
 
   return (
@@ -94,24 +99,51 @@ export function LoginForm({ onBack }: LoginFormProps) {
 
           {/* Demo credentials */}
           <div className="mt-8 p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-600 mb-2 font-medium">Credenciais de demonstração:</p>
-            <div className="space-y-2 text-sm text-gray-500">
-              <div>
-                <strong>Administrador:</strong><br />
-                Email: admin@manoelviana.rs.gov.br<br />
-                Senha: demo123
+            <p className="text-sm text-gray-600 mb-3 font-medium">Credenciais de demonstração:</p>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-center justify-between">
+                <div>
+                  <strong className="text-gray-900">Administrador</strong><br />
+                  <span className="text-gray-600">admin@manoelviana.rs.gov.br</span>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleDemoLogin('admin@manoelviana.rs.gov.br')}
+                >
+                  Usar
+                </Button>
               </div>
-              <div>
-                <strong>Operador:</strong><br />
-                Email: operador@manoelviana.rs.gov.br<br />
-                Senha: demo123
+              <div className="flex items-center justify-between">
+                <div>
+                  <strong className="text-gray-900">Operador</strong><br />
+                  <span className="text-gray-600">operador@manoelviana.rs.gov.br</span>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleDemoLogin('operador@manoelviana.rs.gov.br')}
+                >
+                  Usar
+                </Button>
               </div>
-              <div>
-                <strong>Motorista:</strong><br />
-                Email: motorista@manoelviana.rs.gov.br<br />
-                Senha: demo123
+              <div className="flex items-center justify-between">
+                <div>
+                  <strong className="text-gray-900">Motorista</strong><br />
+                  <span className="text-gray-600">motorista@manoelviana.rs.gov.br</span>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleDemoLogin('motorista@manoelviana.rs.gov.br')}
+                >
+                  Usar
+                </Button>
               </div>
             </div>
+            <p className="text-xs text-gray-500 mt-3">
+              Senha para todos: <code className="bg-gray-200 px-1 rounded">demo123</code>
+            </p>
           </div>
         </div>
 
